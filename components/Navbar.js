@@ -17,7 +17,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link href="/visit">
+          <Link href="/travel">
             <button className={styles.travelBtn}>Travel</button>
           </Link>
         </li>

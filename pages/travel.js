@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./index.module.css";
+import styles from "./travel.module.css";
 import Navbar from "../components/Navbar";
 
 function Visit() {
@@ -46,40 +46,44 @@ function Visit() {
   return (
     <div>
       <Navbar />
-      <main className={styles.main}>
-        <img src="/dog.png" className={styles.icon} />
-        <h3>Free travel suggestions</h3>
-        <h4>
-          Tell me where do you travel and when (summer/winter) and I can suggest
-          travel destinations.
-        </h4>
+      <div className={styles.travel}>
+        <div className={styles.overlay}>
+          <h3>Travel suggestions</h3>
+          <h4>
+            Do you plan to travel soon or on a specific date and you need some
+            suggestions on what to do?
+          </h4>
 
-        <form onSubmit={onSubmit}>
-          <input
-            type="text"
-            name="animal"
-            placeholder="Desired number of suggestions"
-            value={numberInput}
-            onChange={(e) => setNumberInput(e.target.value)}
-          />
-          <input
-            type="text"
-            name="animal"
-            placeholder="Enter a destination"
-            value={destinationInput}
-            onChange={(e) => setDestinationInput(e.target.value)}
-          />
-          <input
-            type="text"
-            name="animal"
-            placeholder="When do you plan to visit?"
-            value={periodInput}
-            onChange={(e) => setPeriodInput(e.target.value)}
-          />
-          <input type="submit" value="Generate travel destinations" />
-        </form>
+          <form className={styles.form} onSubmit={onSubmit}>
+            <input
+              className={styles.input}
+              type="text"
+              name="suggestions"
+              placeholder="Desired number of suggestions"
+              value={numberInput}
+              onChange={(e) => setNumberInput(e.target.value)}
+            />
+            <input
+              className={styles.input}
+              type="text"
+              name="destination"
+              placeholder="Enter a destination"
+              value={destinationInput}
+              onChange={(e) => setDestinationInput(e.target.value)}
+            />
+            <input
+              className={styles.input}
+              type="text"
+              name="when"
+              placeholder="When do you plan to visit?"
+              value={periodInput}
+              onChange={(e) => setPeriodInput(e.target.value)}
+            />
+            <input className={styles.button} type="submit" value="Suggest" />
+          </form>
+        </div>
         <div className={styles.result}>{result}</div>
-      </main>
+      </div>
     </div>
   );
 }
