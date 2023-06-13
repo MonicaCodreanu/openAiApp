@@ -1,0 +1,31 @@
+.modal {
+  position: relative;
+  z-index: 100;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal button {
+  width: 100%;
+  padding: 20px;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.modal button:active {
+  background-color: #fafafc;
+}
+
+.imgContainer {
+  height: 256px;
+  width: 256px;
+  overflow: hidden;
+}
+
+.closeModal {
+  cursor: pointer;
+}
