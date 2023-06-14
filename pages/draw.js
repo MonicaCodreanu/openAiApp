@@ -55,21 +55,31 @@ const Draw = () => {
       <Navbar />
       <div className={styles.introSection}>
         <h1>Drawing page</h1>
-        Start with a detailed description of what you want
+        <h3>
+          Did you know DALL.E can draw the craziest things for you?Let your
+          imagination run wild!
+        </h3>
       </div>
-      <div className={styles.surprise} onClick={surpriseFunc}>
-        Surprise me!
-      </div>
-      <div className={styles.inputContainer}>
-        <input
-          type="text"
-          value={value}
-          placeholder="An impresionist oil painting of sunflower in a purple vase ..."
-          onChange={(e) => {
-            setValue(e.target.value);
-          }}
-        />
-        <button onClick={getImages}>Generate</button>
+      <div className={styles.drawingContainer}>
+        <h3>Start with a detailed description of what you want:</h3>
+        <h3>Or if you feel lucky press the Surprise button!</h3>
+        <div className={styles.inputContainer}>
+          <input
+            type="text"
+            value={value}
+            placeholder="An impresionist oil painting of sunflower in a purple vase ..."
+            onChange={(e) => {
+              setValue(e.target.value);
+            }}
+          />
+          <div className={styles.surprise} onClick={surpriseFunc}>
+            Surprise me!
+          </div>
+        </div>
+
+        <button className={styles.button} onClick={getImages}>
+          Generate
+        </button>
       </div>
       <div className={styles.imageSection}>
         {images &&
@@ -79,7 +89,7 @@ const Draw = () => {
             );
           })}
       </div>
-      {openModal && (
+      {/* {openModal && (
         <div className={styles.overlay}>
           <Modal
             setOpenModal={setOpenModal}
@@ -88,7 +98,7 @@ const Draw = () => {
             generateVariations={generateVariations}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 };

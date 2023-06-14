@@ -78,8 +78,9 @@ const Fun = () => {
   return (
     <div>
       <Navbar />
-      <h1>Fun Page</h1>
-      {/* <section className="uploadSection">
+      <div className={styles.container}>
+        <h1>Fun Page</h1>
+        {/* <section className="uploadSection">
         <p className="extra-info">
           Or,
           <span>
@@ -106,17 +107,18 @@ const Fun = () => {
           </div>
         )}
       </section> */}
-      <h3>Choose one image:</h3>
-      <section className={styles.imageSection}>
-        {imgArray.map((el, index) => {
-          return (
-            <img src={el} alt={"Image"} key={index} onClick={clickHandler} />
-          );
-        })}
-      </section>
-      <button className={styles.button} onClick={generateVariations}>
-        Generate Variations
-      </button>
+        <h3>Choose one image:</h3>
+        <section className={styles.imageSection}>
+          {imgArray.map((el, index) => {
+            return (
+              <img src={el} alt={"Image"} key={index} onClick={clickHandler} />
+            );
+          })}
+        </section>
+        <button className={styles.button} onClick={generateVariations}>
+          Generate Variations
+        </button>
+      </div>
       <section className="imageSection">
         {images
           ? images.map((image, index) => {

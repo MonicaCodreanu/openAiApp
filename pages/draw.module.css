@@ -1,7 +1,10 @@
 .draw {
   margin: 0;
+  background-color: rgb(36, 28, 41);
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .introSection {
@@ -12,21 +15,24 @@
   align-items: center;
   background-image: url("../public/draw.png");
   height: 200px;
+  color: white;
 }
-.surprise {
-  background-color: #ececf1;
-  color: black;
-  border-radius: 5px;
-  font-weight: 600;
-  padding: 4px 12px;
-  margin: 0 0 2px 5px;
+
+.drawingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50vw;
+  color: white;
+}
+.drawingContainer h3 {
+  margin: 5px;
 }
 .inputContainer {
-  width: 100%;
+  width: 90%;
   display: flex;
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: rgba(0, 0, 82, 0.15) 0 2px 4px;
 }
 .inputContainer input {
   border: none;
@@ -34,43 +40,43 @@
   box-sizing: border-box;
   font-size: 15px;
   outline: none;
-  width: 90%;
+  width: 85%;
   font-weight: 200;
 }
 .inputContainer input::placeholder {
   color: #cacaca;
   font-weight: 200;
 }
-
-.inputContainer button {
-  width: 10%;
-  border: none;
-  border-left: 1px solid #cacaca;
-  background-color: #fff;
-  color: #777;
+.surprise {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  border: 1px solid #cacaca;
+  background-color: rgb(36, 28, 41);
+  color: white;
   font-weight: bold;
   cursor: pointer;
 }
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
+.button {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #62015a;
+  box-shadow: 10px 5px 5px #9d00ff;
+  width: 100px;
+  height: 100px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  margin-top: 20px;
 }
-
-.inputContainer button:active {
+.button:active {
   background-color: #cacaca;
 }
 
 .imageSection {
-  width: 100%;
+  width: 90%;
   margin-top: 50px;
   display: flex;
   flex-wrap: wrap;

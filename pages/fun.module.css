@@ -11,12 +11,21 @@
   align-items: center;
   z-index: 10;
 }
-
+.container {
+  width: 100vw;
+  height: 84vh;
+  background-image: url("../public/fun2.png");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .imageSection {
   display: flex;
   gap: 15px;
 }
 .button {
+  margin-top: 20px;
   color: white;
   font-size: 20px;
   font-weight: bold;
