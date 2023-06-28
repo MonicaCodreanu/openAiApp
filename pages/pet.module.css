@@ -25,10 +25,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 40px;
+  background-image: url("../public/paw-print.jpg");
+  background-size: cover;
+  height: 100vh;
+  /* padding-top: 40px; */
 }
 .main .icon {
-  width: 34px;
+  width: 50px;
 }
 .main h1 {
   font-size: 32px;
@@ -65,4 +68,24 @@
 .main .result {
   font-weight: bold;
   margin-top: 40px;
+}
+
+.container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container h2 {
+  color: #10a37f;
+  margin: 0;
+}
+.title {
+  width: 320px;
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid #10a37f;
+  text-align: center;
+  margin-top: 24px;
+  margin-bottom: 24px;
 }

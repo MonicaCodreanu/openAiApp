@@ -7,9 +7,10 @@ const Draw = () => {
   const [images, setImages] = useState(null);
   const [value, setValue] = useState("");
   const [error, setError] = useState(null);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [openModal, setOpenModal] = useState(false);
-  const [result, setResult] = useState();
+  const [loading, setLoading] = useState(false);
+  // const [selectedImage, setSelectedImage] = useState(null);
+  // const [openModal, setOpenModal] = useState(false);
+  // const [result, setResult] = useState();
 
   const surpriseOptions = [
     "A blue lion on a beach",
@@ -24,6 +25,7 @@ const Draw = () => {
   };
   const getImages = async () => {
     setImages(null);
+    setLoading(true);
     if (value === null) {
       setError("Error! You must write a search term");
       return;
@@ -44,6 +46,8 @@ const Draw = () => {
       const data = await response.json();
       console.log(data);
       setImages(data.result);
+      setValue("");
+      setLoading(false);
     } catch (error) {
       console.error(error);
     }
@@ -81,6 +85,7 @@ const Draw = () => {
           Generate
         </button>
       </div>
+      {loading && <h3>Loading...</h3>}
       <div className={styles.imageSection}>
         {images &&
           images.map((element, index) => {
@@ -89,6 +94,7 @@ const Draw = () => {
             );
           })}
       </div>
+
       {/* {openModal && (
         <div className={styles.overlay}>
           <Modal

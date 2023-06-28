@@ -8,8 +8,10 @@ const Fun = () => {
   const [images, setImages] = useState(null);
   const [value, setValue] = useState(null);
   const [error, setError] = useState(null);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [openModal, setOpenModal] = useState(false);
+  const [selectedImageURL, setSelectedImageURL] = useState(null);
+  // const [openModal, setOpenModal] = useState(false);
+  const [imgSelected, setImgSelected] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const imgArray = [
     "/images/cat.png",
@@ -17,44 +19,45 @@ const Fun = () => {
     "/images/person.png",
     "/images/test.png",
   ];
-  const uploadImage = async (e) => {
-    setImages(null);
-    console.log(e.target.files[0]);
-    const formData = new FormData();
-    formData.append("file", e.target.files[0]);
-    setOpenModal(true);
-    setSelectedImage(e.target.files[0]);
+  // const uploadImage = async (e) => {
+  //   setImages(null);
+  //   console.log(e.target.files[0]);
+  //   const formData = new FormData();
+  //   formData.append("file", e.target.files[0]);
+  //   setOpenModal(true);
+  //   setSelectedImage(e.target.files[0]);
 
-    e.target.value = null;
-    //send image to backend
-    try {
-      const options = {
-        method: "POST",
-        body: formData,
-      };
-      const response = await fetch("/api/upload", options);
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  //   e.target.value = null;
+  //   //send image to backend
+  //   try {
+  //     const options = {
+  //       method: "POST",
+  //       body: formData,
+  //     };
+  //     const response = await fetch("/api/upload", options);
+  //     const data = await response.json();
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   const generateVariations = async () => {
-    console.log("Inside generate variations function:");
-    console.log(selectedImage);
+    // console.log("Inside generate variations function:");
+    // console.log(selectedImage);
 
     setImages(null);
-    if (selectedImage === null) {
+    setLoading(true);
+    if (selectedImageURL === null) {
       setError("Error! No file selected");
-      setOpenModal(false);
+      // setOpenModal(false);
       return;
     }
     try {
       console.log("Sending post request");
       const options = {
         method: "POST",
-        body: JSON.stringify(selectedImage),
+        body: JSON.stringify(selectedImageURL),
         headers: {
           "Content-Type": "application/json",
         },
@@ -63,8 +66,10 @@ const Fun = () => {
       const data = await response.json();
       console.log(data);
       setImages(data);
+      setImgSelected(null);
       setError(null);
-      setOpenModal(false);
+      setLoading(false);
+      // setOpenModal(false);
     } catch (error) {
       console.error(error);
     }
@@ -72,7 +77,7 @@ const Fun = () => {
   const clickHandler = (e) => {
     e.preventDefault();
     console.log(e.target.src);
-    setSelectedImage(e.target.src);
+    setSelectedImageURL(e.target.src);
   };
 
   return (
@@ -84,26 +89,37 @@ const Fun = () => {
         <div className={styles.imageSection}>
           {imgArray.map((el, index) => {
             return (
-              <img src={el} alt={"Image"} key={index} onClick={clickHandler} />
+              <img
+                src={el}
+                alt={"Image"}
+                key={index}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setImgSelected(index);
+                  clickHandler(e);
+                }}
+                className={index === imgSelected ? styles.border : ""}
+              />
             );
           })}
         </div>
         <button className={styles.button} onClick={generateVariations}>
           Generate Variations
         </button>
-      </div>
-      <div className={styles.resultSection}>
-        {images
-          ? images.map((image, index) => {
-              return (
-                <img
-                  key={index}
-                  src={image.url}
-                  alt={`Generated image of ${value}`}
-                />
-              );
-            })
-          : ""}
+        {loading ? "Generating ... Please wait!" : ""}
+        <div className={styles.resultSection}>
+          {images
+            ? images.map((image, index) => {
+                return (
+                  <img
+                    key={index}
+                    src={image.url}
+                    alt={`Generated image of ${value}`}
+                  />
+                );
+              })
+            : ""}
+        </div>
       </div>
     </div>
   );

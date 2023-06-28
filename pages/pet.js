@@ -38,20 +38,23 @@ const Pet = () => {
   return (
     <main className={styles.main}>
       <Navbar />
-      PET PAGE
-      <img src="/dog.png" className={styles.icon} />
-      <h3>Name my pet</h3>
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          name="animal"
-          placeholder="Enter an animal"
-          value={animalInput}
-          onChange={(e) => setAnimalInput(e.target.value)}
-        />
-        <input type="submit" value="Generate names" />
-      </form>
-      <div className={styles.result}>{result}</div>
+      <div className={styles.container}>
+        <img src="/dog.png" className={styles.icon} />
+        <div className={styles.title}>
+          <h2>Name my pet</h2>
+        </div>
+        <form onSubmit={onSubmit}>
+          <input
+            type="text"
+            name="animal"
+            placeholder="Enter an animal"
+            value={animalInput}
+            onChange={(e) => setAnimalInput(e.target.value)}
+          />
+          <input type="submit" value="Generate names" />
+        </form>
+        <div className={styles.result}>{result}</div>
+      </div>
     </main>
   );
 };
