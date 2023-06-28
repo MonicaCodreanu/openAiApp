@@ -1,27 +1,24 @@
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.15);
-  overflow: hidden;
+.fun {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  height: 100vh;
 }
-.container {
+
+.funContainer {
   width: 100vw;
-  height: 84vh;
   background-image: url("../public/fun2.png");
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 .imageSection {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 15px;
 }
 .button {
@@ -40,4 +37,13 @@
 
 .button:hover {
   transform: scale(1.1);
+}
+
+@media only screen and (max-width: 490px) {
+  .funContainer {
+    height: auto;
+  }
+  .imageSection {
+    flex-direction: column;
+  }
 }

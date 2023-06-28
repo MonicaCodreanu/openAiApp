@@ -76,11 +76,43 @@ const Fun = () => {
   };
 
   return (
-    <div>
+    <div className={styles.fun}>
       <Navbar />
-      <div className={styles.container}>
+      <div className={styles.funContainer}>
         <h1>Fun Page</h1>
-        {/* <section className="uploadSection">
+        <h3>Choose one image:</h3>
+        <div className={styles.imageSection}>
+          {imgArray.map((el, index) => {
+            return (
+              <img src={el} alt={"Image"} key={index} onClick={clickHandler} />
+            );
+          })}
+        </div>
+        <button className={styles.button} onClick={generateVariations}>
+          Generate Variations
+        </button>
+      </div>
+      <div className={styles.resultSection}>
+        {images
+          ? images.map((image, index) => {
+              return (
+                <img
+                  key={index}
+                  src={image.url}
+                  alt={`Generated image of ${value}`}
+                />
+              );
+            })
+          : ""}
+      </div>
+    </div>
+  );
+};
+
+export default Fun;
+
+{
+  /* <section className="uploadSection">
         <p className="extra-info">
           Or,
           <span>
@@ -106,34 +138,5 @@ const Fun = () => {
             />
           </div>
         )}
-      </section> */}
-        <h3>Choose one image:</h3>
-        <section className={styles.imageSection}>
-          {imgArray.map((el, index) => {
-            return (
-              <img src={el} alt={"Image"} key={index} onClick={clickHandler} />
-            );
-          })}
-        </section>
-        <button className={styles.button} onClick={generateVariations}>
-          Generate Variations
-        </button>
-      </div>
-      <section className="imageSection">
-        {images
-          ? images.map((image, index) => {
-              return (
-                <img
-                  key={index}
-                  src={image.url}
-                  alt={`Generated image of ${value}`}
-                />
-              );
-            })
-          : ""}
-      </section>
-    </div>
-  );
-};
-
-export default Fun;
+      </section> */
+}
