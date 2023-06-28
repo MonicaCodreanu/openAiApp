@@ -104,3 +104,37 @@
 .funBtn:hover {
   transform: scale(1.1);
 }
+
+@media only screen and (max-width: 490px) {
+  .navbar {
+    height: 80px;
+  }
+  .navbar ul {
+    margin: 10px;
+  }
+  .homeBtn {
+    width: 60px;
+    height: 60px;
+    font-size: 14px;
+  }
+  .petBtn {
+    width: 60px;
+    height: 60px;
+    font-size: 14px;
+  }
+  .travelBtn {
+    width: 60px;
+    height: 60px;
+    font-size: 14px;
+  }
+  .drawBtn {
+    width: 60px;
+    height: 60px;
+    font-size: 14px;
+  }
+  .funBtn {
+    width: 60px;
+    height: 60px;
+    font-size: 14px;
+  }
+}

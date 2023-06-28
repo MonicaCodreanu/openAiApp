@@ -47,41 +47,48 @@ function Visit() {
     <div>
       <Navbar />
       <div className={styles.travel}>
-        <div className={styles.overlay}>
-          <h3>Travel suggestions</h3>
-          <h4>
-            Do you plan to travel soon or on a specific date and you need some
-            suggestions on what to do?
-          </h4>
-
-          <form className={styles.form} onSubmit={onSubmit}>
-            <input
-              className={styles.input}
-              type="text"
-              name="suggestions"
-              placeholder="Desired number of suggestions"
-              value={numberInput}
-              onChange={(e) => setNumberInput(e.target.value)}
-            />
-            <input
-              className={styles.input}
-              type="text"
-              name="destination"
-              placeholder="Enter a destination"
-              value={destinationInput}
-              onChange={(e) => setDestinationInput(e.target.value)}
-            />
-            <input
-              className={styles.input}
-              type="text"
-              name="when"
-              placeholder="When do you plan to visit?"
-              value={periodInput}
-              onChange={(e) => setPeriodInput(e.target.value)}
-            />
-            <input className={styles.button} type="submit" value="Suggest" />
-          </form>
-        </div>
+        {!result && (
+          <div className={styles.overlay}>
+            <h2>Travel suggestions</h2>
+            <h4>
+              Do you plan to travel soon or on a specific season and you need
+              some suggestions on what to do?
+            </h4>
+            <p>
+              ChatGPT can suggest "a number" of things to do or visit when you
+              travel to acertain "destination". You can even be more specific
+              and provide the "season or period" in which you travel to get more
+              appropriate suggestions.
+            </p>
+            <form className={styles.form} onSubmit={onSubmit}>
+              <input
+                className={styles.input}
+                type="text"
+                name="suggestions"
+                placeholder="Desired number of suggestions"
+                value={numberInput}
+                onChange={(e) => setNumberInput(e.target.value)}
+              />
+              <input
+                className={styles.input}
+                type="text"
+                name="destination"
+                placeholder="Enter a destination"
+                value={destinationInput}
+                onChange={(e) => setDestinationInput(e.target.value)}
+              />
+              <input
+                className={styles.input}
+                type="text"
+                name="when"
+                placeholder="When do you plan to visit?"
+                value={periodInput}
+                onChange={(e) => setPeriodInput(e.target.value)}
+              />
+              <input className={styles.button} type="submit" value="Suggest" />
+            </form>
+          </div>
+        )}
         <div className={styles.result}>{result}</div>
       </div>
     </div>
